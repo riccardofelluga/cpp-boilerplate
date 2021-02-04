@@ -6,10 +6,11 @@ link_directories(/usr/local/lib)
 
 # add the library subdirectory
 add_subdirectory(libs)
+add_subdirectory(obj)
 
 # add the main executable
-add_executable(main main.cpp)
+add_executable(main main.cc)
 
 #tell the linker what to link
-target_link_libraries(main utils)# ${pkg_name_LIBRARIES})
+target_link_libraries(main utils objects_lib_name)# ${pkg_name_LIBRARIES})
 

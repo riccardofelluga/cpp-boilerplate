@@ -1,0 +1,3 @@
+{
+    "cpplint.root": "${workspaceFolder}/src"
+}

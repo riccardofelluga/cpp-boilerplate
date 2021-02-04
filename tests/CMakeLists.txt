@@ -20,11 +20,13 @@ set(TEST_BINARY ${PROJECT_NAME}_test)
 
 # This is an executable that runs the tests.
 add_executable(${TEST_BINARY} 
-test_utils.cpp)
+test_utils.cc
+test_object.cc)
 
 # Link the executable to needed libraries.
 target_link_libraries(${TEST_BINARY} 
 utils 
+objects_lib_name
 gtest gtest_main # GTest libraries
 )
 

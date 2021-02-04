@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# macOS
+.DS_store
+
+# build folder
+build/*
+
+# compiled libs folder
+lib/*
+
+# bin folder
+bin/*
