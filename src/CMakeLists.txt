@@ -12,5 +12,5 @@ add_subdirectory(obj)
 add_executable(main main.cc)
 
 #tell the linker what to link
-target_link_libraries(main utils objects_lib_name)# ${pkg_name_LIBRARIES})
+target_link_libraries(main PUBLIC utils objects_lib_name)# ${pkg_name_LIBRARIES})
 

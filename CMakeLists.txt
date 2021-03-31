@@ -6,12 +6,16 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif()
 
-#set to see all warnings
-set(CMAKE_CXX_FLAGS "-Wall -Wextra")
-#keep debug info in the binary
-set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
-#set optimization level 0, 1, 2, 3 
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+message(STATUS "Using compiler: ${CMAKE_CXX_COMPILER_ID}")
+
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" )
+    #set to see all warnings
+    set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+    #keep debug info in the binary
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -O0")
+    #set optimization level 0, 1, 2, 3 
+    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+endif()
 
 #tell cmake where to put output binaries
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
