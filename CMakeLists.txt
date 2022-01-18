@@ -1,6 +1,7 @@
+cmake_minimum_required(VERSION 3.14) #mandatory
 project(cpp_boilerplate) #mandatory
-cmake_minimum_required(VERSION 3.1) #mandatory
-set(CMAKE_CXX_STANDARD 11) #use c++11
+
+set(CMAKE_CXX_STANDARD 20) #use c++20
 # Set build type if not set.
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
@@ -17,6 +18,11 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" )
     set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 endif()
 
+#set to see all warnings and if windows set exception handling mode to sc [https://docs.microsoft.com/en-us/cpp/build/reference/eh-exception-handling-model?view=msvc-170]
+if(MSVC)
+    set(CMAKE_CXX_FLAGS "-EHsc")
+endif()
+
 #tell cmake where to put output binaries
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 #tell cmake where to put output libraries binaries
@@ -28,7 +34,9 @@ include_directories(${PROJECT_SOURCE_DIR}/src)
 # Outsource the actual processing to folders. separation of concerns
 add_subdirectory(src)
 
-enable_testing() #mandatory in the top most folder 
+#enable_testing command should be in the source directory root because ctest expects to find a test file in the build directory root.
+enable_testing() 
+
 # Outsorce test configuration in the test folder
 add_subdirectory(tests)
 
